@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Details CRUD</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <h1>Student Details</h1>
+    
+    <form id="student-form">
+        <input type="text" id="first-name" placeholder="First Name" required>
+        <input type="text" id="last-name" placeholder="Last Name" required>
+        <input type="date" id="dob" placeholder="Date of Birth" required>
+        <input type="text" id="parent-name" placeholder="Parent's Name" required>
+        <input type="text" id="address" placeholder="Address" required>
+        <input type="text" id="city" placeholder="City" required>
+        <input type="tel" id="phone" placeholder="Phone Number" required>
+        <button type="submit">Add Student</button>
+    </form>
+
+    <table id="student-table">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date of Birth</th>
+                <th>Parent's Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Phone Number</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            <!-- Student data will be displayed here -->
+        </tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>

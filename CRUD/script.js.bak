@@ -1,0 +1,70 @@
+const studentForm = document.getElementById("student-form");
+const tableBody = document.getElementById("table-body");
+
+studentForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    
+    const firstName = document.getElementById("first-name").value;
+    const lastName = document.getElementById("last-name").value;
+    const dob = document.getElementById("dob").value;
+    const parentName = document.getElementById("parent-name").value;
+    const address = document.getElementById("address").value;
+    const city = document.getElementById("city").value;
+    const phone = document.getElementById("phone").value;
+
+    // Create a new row in the table with student details
+    const newRow = tableBody.insertRow();
+    newRow.innerHTML = `
+        <td>${firstName}</td>
+        <td>${lastName}</td>
+        <td>${dob}</td>
+        <td>${parentName}</td>
+        <td>${address}</td>
+        <td>${city}</td>
+        <td>${phone}</td>
+        <td>
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+        </td>
+    `;
+
+    // Clear the form inputs
+    studentForm.reset();
+});
+
+// Add an event listener to handle delete button clicks
+tableBody.addEventListener("click", function (e) {
+    if (e.target && e.target.classList.contains("delete-btn")) {
+        const row = e.target.parentElement.parentElement;
+        tableBody.deleteRow(row.rowIndex);
+    }
+});
+
+// Add an event listener to handle edit button clicks
+tableBody.addEventListener("click", function (e) {
+    if (e.target && e.target.classList.contains("edit-btn")) {
+        const row = e.target.parentElement.parentElement;
+        const cells = row.getElementsByTagName('td');
+
+        // Extract data from the row for editing
+        const firstName = cells[0].textContent;
+        const lastName = cells[1].textContent;
+        const dob = cells[2].textContent;
+        const parentName = cells[3].textContent;
+        const address = cells[4].textContent;
+        const city = cells[5].textContent;
+        const phone = cells[6].textContent;
+
+        // Fill the form fields with the data for editing
+        document.getElementById("first-name").value = firstName;
+        document.getElementById("last-name").value = lastName;
+        document.getElementById("dob").value = dob;
+        document.getElementById("parent-name").value = parentName;
+        document.getElementById("address").value = address;
+        document.getElementById("city").value = city;
+        document.getElementById("phone").value = phone;
+
+        // Remove the row from the table
+        tableBody.deleteRow(row.rowIndex);
+    }
+});
